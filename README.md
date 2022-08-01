@@ -20,6 +20,7 @@ request URL
       6․for patient registration---------------> http://localhost:3000/api/v1/registration
       
 the request must have  
+
      1․for doctor's registration----------> Doctor's data are:
                      - full_name
                      - email
@@ -28,6 +29,7 @@ the request must have
                      - start(start of work)
                      - end (end of work)
                      - password
+                     
      2.for doctor's login----------------> Doctor's data are:
                      - email
                      -password
