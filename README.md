@@ -62,3 +62,5 @@ the request must have
                      - doctoId
                      - date
                       
+                      
+     Postman link---------->https://go.postman.co/workspace/New-Team-Workspace~7714dc25-2756-4f3c-a573-3f96cb8d5120/collection/21001602-d2c9ee6c-635a-4786-95b3-8cccb9450fa3?action=share&creator=21001602
