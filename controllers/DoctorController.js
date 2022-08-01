@@ -21,6 +21,18 @@ class DoctorController {
             res.status(httpStatusCodes.SERVER_ERROR).send(err.message);
         }
     }
+    static async addNewWorkingDay(req,res){
+        try {
+            const{working_day, start, end}=req.body
+            const {authorization} = req.headers;
+            const doctorId = jwt.decodeToken(authorization.split(' ')[1]);
+            console.log(doctorId)
+            await DoctorService.addNewWorkingDay(working_day,start,end,doctorId.id)
+            res.status(httpStatusCodes.OK).send('working day created')
+        }catch (err){
+            res.status(httpStatusCodes.SERVER_ERROR).send(err.message);
+        }
+    }
 }
 
 module.exports = DoctorController;

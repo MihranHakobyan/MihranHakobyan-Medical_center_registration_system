@@ -1,6 +1,8 @@
 const Users = require('../models/users');
+const working_times = require('../models/working_times');
 const Registrations = require('../models/registrations');
 const ApiError = require('../libs/errors/apiError');
+
 
 class RegistrationService {
     static async registration(doctorId, date, name, surname, email) {
@@ -11,6 +13,23 @@ class RegistrationService {
         });
         if (check) {
             throw  ApiError.BadRequestError(`Doctor with id : ${doctorId}  busy at that time`);
+        }
+        const working_day = await working_times.findAll({where: {doctorId}});
+        let result = true;
+        for (let i = 0; i < working_day.length; i++) {
+            const work_date = working_day[i].dataValues;
+            let {start, end} = work_date;
+            const time = new Date(date).getHours();
+            start = Number(start.toString()[0] + start.toString()[1]);
+            end = Number(end.toString()[0] + end.toString()[1]);
+            if (Math.floor(Math.abs(work_date.working_day - new Date(date)) / (1000 * 60 * 60 * 24)) == 0 && start <= time && time <= end) {
+                result = false;
+                break;
+            }
+            console.log(start <= time && time <= end);
+        }
+        if (result) {
+            throw  ApiError.BadRequestError(`you have selected a non-working time`);
         }
         const candidate = await Users.findUserByEmail(email);
         if (candidate) {

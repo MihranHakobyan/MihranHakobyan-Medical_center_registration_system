@@ -13,8 +13,8 @@ class AuthController {
             }
 
 
-            const {full_name, email,password,position} = req.body;
-            await AuthService.register(full_name, email,password,position);
+            const {full_name, email,password,position,working_day, start, end} = req.body;
+            await AuthService.register(full_name, email,password,position,working_day, start, end);
             res.status(httpStatusCode.CREATED).json({
                 message: 'registration seccess'
             });

@@ -15,12 +15,14 @@ class DoctorService {
             }
         );
     }
-
     static async getAllDoctors() {
         return Doctors.findAll({
             attributes: ['full_name','email'],
             include: Working_times
         });
+    }
+    static async addNewWorkingDay(working_day, start, end,doctorId){
+        await Working_times.create({working_day, start,end, doctorId:10})
     }
 }
 
