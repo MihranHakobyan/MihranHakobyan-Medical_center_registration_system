@@ -1,5 +1,6 @@
 const {Model, DataTypes} = require('sequelize');
 const connection = require('../db/connection');
+const working_times=require('./working_times')
 class doctors extends Model {
 
     static associate() {
@@ -24,5 +25,5 @@ doctors.init({
     modelName: 'doctors',
     tableName: 'doctors'
 });
-
+doctors.hasMany(working_times,{foreignKey:'doctorId'})
 module.exports = doctors;

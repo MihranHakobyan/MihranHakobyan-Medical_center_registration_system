@@ -2,7 +2,7 @@ const {validationResult} = require('express-validator');
 const RegistrationService = require('../services/RegistrationService');
 const httpStatusCode = require('../libs/constants/http-Status-Codes');
 const ApiError = require('../libs/errors/apiError');
-const mailer=require('../libs/email')
+const mailer = require('../libs/email');
 
 
 class RegistrationController {
@@ -16,9 +16,9 @@ class RegistrationController {
 
             const {doctorId, date, name, surname, email} = req.body;
             await RegistrationService.registration(doctorId, date, name, surname, email);
-            mailer.mailOptions.to=email
-            mailer.mailOptions.text=`you have successfully registered on ${date}`
-            await mailer.transporter.sendMail(mailer.mailOptions)
+            mailer.mailOptions.to = email;
+            mailer.mailOptions.text = `you have successfully registered on ${date}`;
+            await mailer.transporter.sendMail(mailer.mailOptions);
 
             res.status(httpStatusCode.CREATED).json({
                 message: 'registration seccess'
