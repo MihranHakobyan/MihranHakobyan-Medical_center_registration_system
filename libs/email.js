@@ -4,7 +4,7 @@ const configs = require('../config/configs');
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user:  configs.EMAIL,
+        user: configs.EMAIL,
         pass: configs.EMAIL_PASSWORD
     }
 });
@@ -15,7 +15,4 @@ const mailOptions = {
 
 };
 
-
-module.exports={transporter,mailOptions}
-
-
+module.exports = {transporter, mailOptions};

@@ -8,6 +8,6 @@ const httpStatusCodes = {
     SERVER_ERROR: 500
 };
 
-Object.freeze(httpStatusCodes)
+Object.freeze(httpStatusCodes);
 
-module.exports=httpStatusCodes
+module.exports = httpStatusCodes;

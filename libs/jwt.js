@@ -21,7 +21,5 @@ function decodeToken(token) {
 }
 
 module.exports = {
-    generateToken,
-    validateToken,
-    decodeToken
+    generateToken, validateToken, decodeToken
 };
